@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="secondWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="sample.Controller">
+   <children>
+      <Button layoutX="40.0" layoutY="276.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="328.0" text="Memory used by each process" textFill="#723c80de">
+         <font>
+            <Font name="Loma Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button fx:id="moreCPU" layoutX="40.0" layoutY="128.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="328.0" text="Processes that consume more CPU" onMouseClicked="#listMoreCPU" textFill="#713c80de">
+         <font>
+            <Font name="Loma Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button layoutX="40.0" layoutY="350.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="328.0" text="CPU resources consumed by each process" textFill="#723c80de">
+         <font>
+            <Font name="Loma Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button  fx:id="moreRAM" layoutX="40.0" layoutY="204.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="328.0" text="Processes that consume more RAM Memory" onMouseClicked="#listMoreRAM" textFill="#713c80de">
+         <font>
+            <Font name="Loma Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <Button layoutX="114.0" layoutY="452.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" text="Filter a specific process" textFill="#723c80de">
+         <font>
+            <Font name="Loma Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <ImageView fitHeight="48.0" fitWidth="59.0" layoutX="40.0" layoutY="461.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../filter.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="79.0" fitWidth="73.0" layoutX="167.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../process.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="18.0" layoutY="26.0" mnemonicParsing="false" text="Back">
+         <font>
+            <Font name="Loma Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
