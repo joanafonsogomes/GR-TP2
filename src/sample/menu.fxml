@@ -24,7 +24,7 @@
       </Button>
       <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="240.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../process.png" />
+            <Image url="@../../../../process.png" />
          </image>
       </ImageView>
       <Button layoutX="54.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#graphFiveMoreCPU" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consumed more CPU" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
@@ -56,12 +56,12 @@
       </Text>
       <ImageView fitHeight="68.0" fitWidth="59.0" layoutX="276.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../cpuImage.png" />
+            <Image url="@../../../../cpuImage.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="273.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../ramImage.png" />
+            <Image url="@../../../../ramImage.png" />
          </image>
       </ImageView>
    </children>
