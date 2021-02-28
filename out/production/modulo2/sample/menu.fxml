@@ -22,7 +22,7 @@
             <Glow />
          </effect>
       </Button>
-      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="241.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="241.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../process.png" />
          </image>
@@ -38,7 +38,7 @@
             <Glow level="0.31" />
          </effect>
       </Button>
-      <Button layoutX="54.0" layoutY="433.0" mnemonicParsing="false" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consumed more RAM Memory" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
+      <Button layoutX="54.0" layoutY="433.0" mnemonicParsing="false" onMouseClicked="#graphFiveMoreRAM" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consumed more RAM Memory" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
          <font>
             <Font name="Noto Mono" size="15.0" />
          </font>
@@ -49,7 +49,7 @@
             <Glow />
          </effect>
       </Button>
-      <Text layoutX="124.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
+      <Text layoutX="125.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu">
          <font>
             <Font name="Noto Mono" size="48.0" />
          </font>

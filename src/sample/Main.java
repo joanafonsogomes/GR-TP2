@@ -71,13 +71,6 @@ public class Main extends Application {
             } catch (IOException ioException) {
             ioException.printStackTrace();
             }
-    // DEBUG
-    for(ArrayList<Object> ao : monot){
-        for(Object o : ao){
-            System.out.print(o + " ");
-        }
-        System.out.println("\n -------");
-    }
     }
 
     public static void main(String[] args) {

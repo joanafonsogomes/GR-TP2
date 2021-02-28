@@ -8,15 +8,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="tablePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="708.0" style="-fx-background-color: #FAF0E6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="tablePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="708.0" style="-fx-background-color: #FAF0E6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Label layoutX="459.0" layoutY="99.0" text="Filter by process name:">
          <font>
             <Font name="Noto Mono" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="436.0" layoutY="131.0" prefHeight="26.0" prefWidth="203.0" />
-      <Button layoutX="645.0" layoutY="131.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 0.5; -fx-border-color: #101010; -fx-border-radius: 6;" text="↳">
+      <TextField fx:id="filterByName" layoutX="436.0" layoutY="131.0" prefHeight="26.0" prefWidth="203.0" />
+      <Button fx:id="filterByNameButton" layoutX="645.0" layoutY="131.0" onMouseClicked="#filterTable" mnemonicParsing="false" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 0.5; -fx-border-color: #101010; -fx-border-radius: 6;" text="↳">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
