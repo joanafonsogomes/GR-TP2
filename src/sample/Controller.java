@@ -85,7 +85,12 @@ public class Controller {
             String namePS = nameP.toString();
 
             Object cpuO = ao.get(3);
-            String stringCpuV = cpuO.toString();
+
+            String stringCpuV2 = cpuO.toString();
+            int cpuEI = (Integer.parseInt(stringCpuV2)) / 100;
+            String stringCpuV = String.valueOf(cpuEI);
+
+
             int cpuV =Integer.parseInt(stringCpuV);
             if (namesAndCPU.keySet().contains(namePS)) {
                 if (namesAndCPU.get(namePS) < cpuV) {
@@ -125,7 +130,7 @@ public class Controller {
         }
 
         final NumberAxis xAxis = new NumberAxis(0,maxSec,1);
-        final NumberAxis yAxis = new NumberAxis("Number (in centi-seconds) of system's CPU resources consumed",0,max+2000,1000);
+        final NumberAxis yAxis = new NumberAxis("Number (seconds) of system's CPU resources consumed",0,max+100,100);
 
         this.chartCPU = new AreaChart<>(xAxis,yAxis);
         this.chartCPU.setTitle("CPU usage");
@@ -146,7 +151,8 @@ public class Controller {
                     String testString2 = ao.get(0).toString();
                     int test2 = Integer.parseInt(testString2);
                     String testString3 = ao.get(3).toString();
-                    int test3 = Integer.parseInt(testString3);
+                    int test3a= Integer.parseInt(testString3);
+                    int test3 = test3a/100;
                     chartSeries.getData().add(new XYChart.Data(test2, test3));
                 }
             }
@@ -189,7 +195,10 @@ public class Controller {
             String namePS = nameP.toString();
 
             Object ramO = ao.get(2);
-            String stringRamV = ramO.toString();
+            String stringRamV2 = ramO.toString();
+            int ramEI = (Integer.parseInt(stringRamV2)) / 1000;
+            String stringRamV = String.valueOf(ramEI);
+
             int ramV =Integer.parseInt(stringRamV);
             if (namesAndRAM.keySet().contains(namePS)) {
                 if (namesAndRAM.get(namePS) < ramV) {
@@ -229,7 +238,7 @@ public class Controller {
         }
 
         final NumberAxis xAxis = new NumberAxis(0,maxSec,1);
-        final NumberAxis yAxis = new NumberAxis("RAM Memory used",0,max+2000,1000);
+        final NumberAxis yAxis = new NumberAxis("RAM Memory used (in Bytes)",0,max+100,100);
 
         this.chartRAM = new AreaChart<>(xAxis,yAxis);
         this.chartRAM.setTitle("RAM usage");
@@ -250,7 +259,7 @@ public class Controller {
                     String testString2 = ao.get(0).toString();
                     int test2 = Integer.parseInt(testString2);
                     String testString3 = ao.get(2).toString();
-                    int test3 = Integer.parseInt(testString3);
+                    int test3 = (Integer.parseInt(testString3)/1000);
                     chartSeries.getData().add(new XYChart.Data(test2, test3));
                 }
             }
@@ -305,8 +314,14 @@ public class Controller {
     public void populateProcTable(){
         for(ArrayList<Object> ao : mapIter) {
             String nomeE = String.valueOf(ao.get(1));
-            String cpuE = String.valueOf(ao.get(3));
-            String ramE = String.valueOf(ao.get(2));
+            String cpuE2 = String.valueOf(ao.get(3));
+            int cpuEI = (Integer.parseInt(cpuE2)) / 100;
+            String cpuE = String.valueOf(cpuEI);
+
+            String ramE2 = String.valueOf(ao.get(2));
+            int ramEI = (Integer.parseInt(ramE2)) / 1000;
+            String ramE = String.valueOf(ramEI);
+
             Entrada e = new Entrada(nomeE, cpuE, ramE);
             this.data.add(e);
         }
@@ -318,8 +333,14 @@ public class Controller {
     public void populateProcTableFiltered(){
         for(ArrayList<Object> ao : mapIter) {
             String nomeE = String.valueOf(ao.get(1));
-            String cpuE = String.valueOf(ao.get(3));
-            String ramE = String.valueOf(ao.get(2));
+            String cpuE2 = String.valueOf(ao.get(3));
+            int cpuEI = (Integer.parseInt(cpuE2)) / 100;
+            String cpuE = String.valueOf(cpuEI);
+
+            String ramE2 = String.valueOf(ao.get(2));
+            int ramEI = (Integer.parseInt(ramE2)) / 1000;
+            String ramE = String.valueOf(ramEI);
+
             Entrada e = new Entrada(nomeE, cpuE, ramE);
             this.data.add(e);
         }
@@ -466,8 +487,12 @@ public class Controller {
                 if (s.contains(pesquisa)) {
                     String nome = String.valueOf(ao.get(1));
                     String cpu = String.valueOf(ao.get(3));
+                    int cpuI = (Integer.parseInt(cpu)) / 100;
+                    String cpuS = String.valueOf(cpuI);
                     String ram = String.valueOf(ao.get(2));
-                    Entrada e = new Entrada(nome, cpu, ram);
+                    int ramI = (Integer.parseInt(ram)) / 1000;
+                    String ramS = String.valueOf(ramI);
+                    Entrada e = new Entrada(nome, cpuS, ramS);
                     this.data.add(e);
                 }
             }
