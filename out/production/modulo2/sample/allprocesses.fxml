@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FAF0E6;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <TableView fx:id="allProcessesTable" layoutX="14.0" layoutY="89.0" prefHeight="294.0" prefWidth="577.0" style="-fx-background-color: #000000;">
+        <columns>
+          <TableColumn fx:id="nomeProcessoColuna" prefWidth="148.0" text="PROCESS" />
+          <TableColumn fx:id="cpuColuna" prefWidth="176.0" text="CPU" />
+            <TableColumn fx:id="ramColuna" prefWidth="190.0" text="RAM" />
+        </columns>
+      </TableView>
+      <Label layoutX="206.0" layoutY="22.0" text="Filter by process name:">
+         <font>
+            <Font name="Noto Mono" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="184.0" layoutY="46.0" prefHeight="26.0" prefWidth="203.0" />
+      <Button layoutX="394.0" layoutY="46.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="38.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 0.5; -fx-border-color: #101010; -fx-border-radius: 6;" text="↳">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+   </children>
+</Pane>
