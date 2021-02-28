@@ -1,16 +1,12 @@
 package sample;
 
-import javafx.beans.Observable;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
@@ -22,16 +18,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.URL;
 import java.util.*;
 
 public class Controller {
+    @FXML
+    private ArrayList<ArrayList<Object>> mapIter = Main.getMonot();
+    @FXML
     private File logFileNow;
     @FXML
     private Pane firstWindow;
@@ -60,7 +55,6 @@ public class Controller {
     public void graphFiveMoreCPU(MouseEvent mouseEvent) throws IOException {
         Stage stage = new Stage();
         stage.setTitle("CPU");
-        ArrayList<ArrayList<Object>> mapIter = Main.getMonot();
 
         ArrayList<String> namesList = new ArrayList<String>();
         HashMap<String, XYChart.Series> chartsMap = new HashMap<String, XYChart.Series>();
@@ -107,12 +101,12 @@ public class Controller {
         while(countTen < 5){
             int compare = 0;
             String nameS = " ";
-                for (String k : namesAndCPU.keySet()) {
-                    if (namesAndCPU.get(k).compareTo(compare) > 0) {
-                        compare = namesAndCPU.get(k);
-                        nameS = k;
-                    }
+            for (String k : namesAndCPU.keySet()) {
+                if (namesAndCPU.get(k).compareTo(compare) > 0) {
+                    compare = namesAndCPU.get(k);
+                    nameS = k;
                 }
+            }
             namesList.add(nameS);
             System.out.println("a key maxima é: " + nameS + " || o seu value é:" + namesAndCPU.get(nameS));
             namesAndCPU.remove(nameS,compare);
@@ -150,19 +144,19 @@ public class Controller {
 
         // takes cpu data from those 10 processes and makes a graph
         for(String name : namesList){
-                XYChart.Series chartSeries = chartsMap.get(name);
-                chartSeries.setName(name);
-                for (ArrayList<Object> ao : mapIter) {
-                    if ((ao.get(1)).equals(name)) {
-                        String testString2 = ao.get(0).toString();
-                        int test2 = Integer.parseInt(testString2);
-                        String testString3 = ao.get(3).toString();
-                        int test3 = Integer.parseInt(testString3);
-                        chartSeries.getData().add(new XYChart.Data(test2, test3));
-                    }
+            XYChart.Series chartSeries = chartsMap.get(name);
+            chartSeries.setName(name);
+            for (ArrayList<Object> ao : mapIter) {
+                if ((ao.get(1)).equals(name)) {
+                    String testString2 = ao.get(0).toString();
+                    int test2 = Integer.parseInt(testString2);
+                    String testString3 = ao.get(3).toString();
+                    int test3 = Integer.parseInt(testString3);
+                    chartSeries.getData().add(new XYChart.Data(test2, test3));
                 }
+            }
 
-        this.chartCPU.getData().addAll(chartSeries);
+            this.chartCPU.getData().addAll(chartSeries);
         }
 
         Scene scene  = new Scene(this.chartCPU,800,600);
@@ -188,18 +182,6 @@ public class Controller {
     @FXML
     Button backToLogPickButton;
     @FXML
-    public void backToLogPick(MouseEvent mouseEvent) throws IOException {
-        Stage stage = (Stage) backToLogPickButton.getScene().getWindow();
-        stage.close();
-
-        Parent firstPan = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene scene = new Scene(firstPan);
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("TP2 GR");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-    @FXML
     TableView allProcessesTable;
     @FXML
     TableColumn nomeProcessoColuna;
@@ -209,73 +191,71 @@ public class Controller {
     TableColumn ramColuna;
     @FXML
     private TableView<Entrada> tableTry = new TableView<Entrada>();
+
+    /**
+     * Creates the list that will go into the table of processes
+     */
     @FXML
     private final ObservableList<Entrada> data =
             FXCollections.observableArrayList(
-                    new Entrada("Jacob", "Smith", "jacob.smith@example.com"),
-                    new Entrada("Isabella", "Johnson", "isabella.johnson@example.com"),
-                    new Entrada("Ethan", "Williams", "ethan.williams@example.com"),
-                    new Entrada("Emma", "Jones", "emma.jones@example.com"),
-                    new Entrada("Michael", "Brown", "michael.brown@example.com"),
-                    new Entrada("Jacob", "Smith", "jacob.smith@example.com"),
-                    new Entrada("Isabella", "Johnson", "isabella.johnson@example.com"),
-                    new Entrada("Ethan", "Williams", "ethan.williams@example.com"),
-                    new Entrada("Emma", "Jones", "emma.jones@example.com"),
-                    new Entrada("Michael", "Brown", "michael.brown@example.com"),
-                    new Entrada("Jacob", "Smith", "jacob.smith@example.com"),
-                    new Entrada("Isabella", "Johnson", "isabella.johnson@example.com"),
-                    new Entrada("Ethan", "Williams", "ethan.williams@example.com"),
-                    new Entrada("Emma", "Jones", "emma.jones@example.com"),
-                    new Entrada("Michael", "Brown", "michael.brown@example.com"),
-                    new Entrada("Jacob", "Smith", "jacob.smith@example.com"),
-                    new Entrada("Isabella", "Johnson", "isabella.johnson@example.com"),
-                    new Entrada("Ethan", "Williams", "ethan.williams@example.com"),
-                    new Entrada("Emma", "Jones", "emma.jones@example.com"),
-                    new Entrada("Michael", "Brown", "michael.brown@example.com")
+    );
 
-            );
+    /**
+     * Populates the table of processes
+     */
+    public void populateProcTable(){
+        for(ArrayList<Object> ao : mapIter) {
+            String nomeE = String.valueOf(ao.get(1));
+            String cpuE = String.valueOf(ao.get(3));
+            String ramE = String.valueOf(ao.get(2));
+            Entrada e = new Entrada(nomeE, cpuE, ramE);
+            this.data.add(e);
+        }
+    }
+
     @FXML
     Pane tablePane;
     @FXML
     public void tabelaTry() {
-            Stage stage = new Stage();
-            Scene scene = new Scene(new Group());
-            stage.setTitle("Table View Sample");
-            stage.setWidth(500);
-            stage.setHeight(600);
+        Stage stage = new Stage();
+        Scene scene = new Scene(new Group());
+        stage.setTitle("Table View Sample");
+        stage.setWidth(500);
+        stage.setHeight(600);
 
-            Label label = new Label("ola");
+        Label label = new Label("ola");
 
-            tableTry.setEditable(true);
+        tableTry.setEditable(true);
 
-            TableColumn firstNameCol = new TableColumn("First Name");
-            firstNameCol.setMinWidth(100);
-            firstNameCol.setCellValueFactory(
-                    new PropertyValueFactory<Entrada, String>("firstName"));
+        TableColumn firstNameCol = new TableColumn("Processo");
+        firstNameCol.setMinWidth(100);
+        firstNameCol.setCellValueFactory(
+                new PropertyValueFactory<Entrada, String>("firstName"));
 
-            TableColumn lastNameCol = new TableColumn("Last Name");
-            lastNameCol.setMinWidth(100);
-            lastNameCol.setCellValueFactory(
-                    new PropertyValueFactory<Entrada, String>("lastName"));
+        TableColumn lastNameCol = new TableColumn("CPU");
+        lastNameCol.setMinWidth(100);
+        lastNameCol.setCellValueFactory(
+                new PropertyValueFactory<Entrada, String>("lastName"));
 
-            TableColumn emailCol = new TableColumn("Email");
-            emailCol.setMinWidth(200);
-            emailCol.setCellValueFactory(
-                    new PropertyValueFactory<Entrada, String>("email"));
+        TableColumn emailCol = new TableColumn("RAM");
+        emailCol.setMinWidth(200);
+        emailCol.setCellValueFactory(
+                new PropertyValueFactory<Entrada, String>("email"));
 
-            tableTry.setItems(data);
-            tableTry.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+        populateProcTable();
+        tableTry.setItems(data);
+        tableTry.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
 
-            final VBox vbox = new VBox();
-            vbox.setSpacing(5);
-            vbox.setPadding(new Insets(10, 0, 0, 10));
-            vbox.getChildren().addAll(label, tableTry);
+        final VBox vbox = new VBox();
+        vbox.setSpacing(5);
+        vbox.setPadding(new Insets(10, 0, 0, 10));
+        vbox.getChildren().addAll(label, tableTry);
 
-            ((Group) scene.getRoot()).getChildren().addAll(vbox);
+        ((Group) scene.getRoot()).getChildren().addAll(vbox);
 
-            stage.setScene(scene);
-            stage.show();
-        }
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     private TableView<Entrada> tableCopy = new TableView<Entrada>();
@@ -294,38 +274,38 @@ public class Controller {
 
     public static class Entrada {
 
-        private final SimpleStringProperty firstName;
+        private final SimpleStringProperty nameP;
         private final SimpleStringProperty lastName;
         private final SimpleStringProperty email;
 
-        private Entrada(String fName, String lName, String email) {
-            this.firstName = new SimpleStringProperty(fName);
+        private Entrada(String name, String lName, String email) {
+            this.nameP = new SimpleStringProperty(name);
             this.lastName = new SimpleStringProperty(lName);
             this.email = new SimpleStringProperty(email);
         }
 
         public String getFirstName() {
-            return firstName.get();
+            return nameP.get();
         }
 
-        public void setFirstName(String fName) {
-            firstName.set(fName);
+        public void setFirstName(String name) {
+            nameP.set(name);
         }
 
         public String getLastName() {
             return lastName.get();
         }
 
-        public void setLastName(String fName) {
-            lastName.set(fName);
+        public void setLastName(String name) {
+            lastName.set(name);
         }
 
         public String getEmail() {
             return email.get();
         }
 
-        public void setEmail(String fName) {
-            email.set(fName);
+        public void setEmail(String name) {
+            email.set(name);
         }
     }
 

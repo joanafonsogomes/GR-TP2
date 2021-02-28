@@ -27,7 +27,7 @@
             <Image url="@../../../../process.png" />
          </image>
       </ImageView>
-      <Button layoutX="54.0" layoutY="329.0" mnemonicParsing="false" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consume more CPU" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
+      <Button layoutX="54.0" layoutY="329.0" mnemonicParsing="false" onMouseClicked="#graphFiveMoreCPU" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consumed more CPU" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
          <font>
             <Font name="Noto Mono" size="15.0" />
          </font>
@@ -38,7 +38,7 @@
             <Glow level="0.31" />
          </effect>
       </Button>
-      <Button layoutX="54.0" layoutY="433.0" mnemonicParsing="false" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consume more RAM Memory" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
+      <Button layoutX="54.0" layoutY="433.0" mnemonicParsing="false" opacity="0.9" prefHeight="90.0" prefWidth="201.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Processes that consumed more RAM Memory" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
          <font>
             <Font name="Noto Mono" size="15.0" />
          </font>
@@ -54,25 +54,14 @@
             <Font name="Noto Mono" size="48.0" />
          </font>
       </Text>
-      <Button fx:id="backToLogPickButton" layoutX="13.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#backToLogPick" opacity="0.9" prefHeight="31.0" prefWidth="47.0" style="-fx-background-color: #FFDEAD; -fx-border-width: 1; -fx-border-color: #101010; -fx-border-radius: 6;" text="Back" textAlignment="CENTER" textFill="#0f0f0f" wrapText="true">
-         <font>
-            <Font name="Noto Mono" size="11.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <effect>
-            <Glow />
-         </effect>
-      </Button>
       <ImageView fitHeight="68.0" fitWidth="59.0" layoutX="272.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../cpuImage.png" />
+            <Image url="@../../../../cpuImage.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="68.0" fitWidth="65.0" layoutX="270.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../ramImage.png" />
+            <Image url="@../../../../ramImage.png" />
          </image>
       </ImageView>
    </children>
