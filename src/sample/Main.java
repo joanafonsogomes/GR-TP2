@@ -6,10 +6,6 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -19,8 +15,14 @@ import java.util.regex.Pattern;
 
 public class Main extends Application {
 
+    /**
+     * Array that will allocate all the processed data of the log file
+     */
     private static ArrayList<ArrayList<Object>> monot = new ArrayList<ArrayList<Object>>();
 
+    /**
+     * Starting of the program
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -35,6 +37,9 @@ public class Main extends Application {
         monot  = monoti;
     }
 
+    /**
+     * Processing the data from the log file
+     */
     public static void processData(File logFile) throws FileNotFoundException {
         String read = null;
         try {

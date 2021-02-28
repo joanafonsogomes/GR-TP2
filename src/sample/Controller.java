@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
@@ -13,7 +12,6 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -33,6 +31,10 @@ public class Controller {
     private Pane secondWindow;
     @FXML
     private Pane thirdWindow;
+
+    /**
+     * Method to pick and process a log file
+     */
     @FXML
     public void pickLogFile(MouseEvent mouseEvent) throws IOException {
         FileChooser chooser = new FileChooser();
